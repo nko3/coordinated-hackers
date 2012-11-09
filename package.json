@@ -1,0 +1,19 @@
+{
+  "name": "nko3-coordinated-hackers",
+  "version": "0.0.0",
+  "description": "Coordinated Hackers",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nko3/coordinated-hackers.git"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": "0.8.x"
+  },
+  "subdomain": "coordinated-hackers.nko3"
+}
