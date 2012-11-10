@@ -1,8 +1,7 @@
-var http = require('http');
 var express = require('express');
-var fs = require('fs');
 var app = express();
 
-app.use(express.static(__dirname + '/static'));
+// spin up server
+app.listen(8000, '127.0.0.1')
 
-app.listen(8000);
+app.use(express.static(__dirname + '/static'));
