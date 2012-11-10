@@ -13,14 +13,29 @@
     window.URL = window.URL || window.webkitURL;
 
     navigator.getUserMedia({video: true}, function(localMediaStream) {
-        var video = document.createElement("video");
+
+        video = document.createElement("video");
         video.autoplay = true;
         video.src = window.URL.createObjectURL(localMediaStream);
-        document.body.appendChild(video);
+
+        var video2 = $(video).clone();
+
+        var div1 = $('<div id="1">').append(video)
+        var div2 = $('<div id="2">').append(video2)
+
+        $('body').append(div1);
+        $('body').append(div2);
+    
+        var timeoutHandle = setInterval(function(){
+            $('#2').toggle();
+        },100)
+
     }, function(error) {
         console.log(error);
     });
 </script>
+
+<script type="text/javascript" src="js/jquery.js"></script>
 
 </body>
 
