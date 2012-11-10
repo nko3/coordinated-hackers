@@ -1,42 +1,84 @@
 <!DOCTYPE HTML>
-
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Knockout. KaPow</title>
 </head>
+<script type="text/javascript" src="js/jquery.js"></script>
+<style>
+	.container {
+		margin: 1em auto 0;
+		width: 640px;
+	}
+	#video2 {
+		-webkit-transform: rotate3d(0, 1, 0, 180deg);
+		position: absolute;
+		top: 1em;
+	}
+	video {
+		width: 640px;
+		height: 480px;
+	}
+	.inputContainer {
+		width: 175px;
+		margin: 1em auto;
+		display: block;
+	}
+</style>
+<body>
+<div class="container">
+	<video autoplay id="video1"></video>
+	<video autoplay id="video2"></video>
+	<div class="inputContainer">
+		<input id="interval" type="range" min=1 max=100 value=100><output for="interval"></output>
+	</div>
 
+</div>
 <script>
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     window.URL = window.URL || window.webkitURL;
 
+	var video1 = document.getElementById("video1");
+	var video2 = document.getElementById("video2");
+	var interval = document.getElementById("interval");
+
     navigator.getUserMedia({video: true}, function(localMediaStream) {
+		var stream = window.URL.createObjectURL(localMediaStream);
+        video1.src = video2.src = stream;
 
-        video = document.createElement("video");
-        video.autoplay = true;
-        video.src = window.URL.createObjectURL(localMediaStream);
-
-        var video2 = $(video).clone();
-
-        var div1 = $('<div id="1">').append(video)
-        var div2 = $('<div id="2">').append(video2)
-
-        $('body').append(div1);
-        $('body').append(div2);
-    
-        var timeoutHandle = setInterval(function(){
-            $('#2').toggle();
-        },100)
+		setToggle(50)
 
     }, function(error) {
         console.log(error);
     });
+
+	interval.addEventListener("input", function(){
+		this.nextSibling.value = this.value;
+		clearToggle();
+		setToggle(this.value);
+	});
+	interval.nextSibling.value = interval.value;
+
+	function setToggle(time){
+		var toggle = true;
+		window.intervalHandle = setInterval(function(){
+			if (toggle) {
+				video2.style.display = "none";
+				toggle = false;
+			} else {
+				video2.style.display = "block";
+				toggle = true;
+			}
+		},time || 100)
+	}
+	function clearToggle(){
+		if (window.intervalHandle !== null) {
+			clearInterval(window.intervalHandle);
+			window.intervalHandle = null;
+		}
+	}
+
 </script>
-
-<script type="text/javascript" src="js/jquery.js"></script>
-
 </body>
 
 </html>
