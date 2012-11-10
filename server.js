@@ -10,8 +10,6 @@ var lobby = [];
 
 io.sockets.on('connection', function(socket){
 	socket.on('wantpartner', function(){
-		var partner;
-		console.log('new guy in the lobby!');
 		if (lobby.length) {
 			socket.partner = lobby.shift();
 			socket.partner.partner = socket;
@@ -30,5 +28,17 @@ io.sockets.on('connection', function(socket){
 		}
 		socket.partner.emit('partnermessage', message);
 	});
-
+	socket.on('disconnect', function() {
+		var idx;
+		console.log('later bro');
+		if (socket.partner) {
+			console.log('purdner:', socket.partner);
+			delete socket.partner.partner
+			socket.partner.emit('partnerleft');
+		} else {
+			if ((idx = lobby.indexOf(socket)) != -1) {
+				lobby.splice(idx);
+			}
+		}
+	});
 });

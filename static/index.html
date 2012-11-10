@@ -53,6 +53,7 @@
 			}.bind(this));
 			this.socket.on('foundpartner', this.onfoundpartner.bind(this));
 			this.socket.on('partnermessage', this.onpartnermessage.bind(this));
+			this.socket.on('partnerleft', this.onpartnerleft.bind(this));
 		},
 		createPeerConnection: function(){
 			// XXX this may not take a function argument anymore
@@ -85,6 +86,12 @@
 			default:
 				console.warn('unknown message from candidate:', message);
 			}
+		},
+		onpartnerleft: function(){
+			viewer.setOtherSource(null);
+			this.peerConnection.close();
+			this.createPeerConnection();
+			this.socket.emit('wantpartner');
 		},
 		onofferanswered: function(partner){
 			console.log('offer/answer answered');
@@ -127,7 +134,13 @@
 			video1.src = streamURL;
 			this.setToggle(50);
 		},
-		setOtherSource: function(stream) { video2.src = URL.createObjectURL(stream); },
+		setOtherSource: function(stream) {
+			if (stream) {
+				video2.src = URL.createObjectURL(stream);
+			} else {
+				video2.src = '';
+			}
+		},
 		setToggle: function(time){
 			var toggle = true;
 			this.intervalHandle = setInterval(function(){
