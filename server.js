@@ -1,7 +1,11 @@
 var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(8000);
+var express = require('express');
+var fs = require('fs');
+// Hax
+var clientJS = __dirname + '/node_modules/webrtc.io-client/lib/webrtc.io.js';
+var app = express();
 
-console.log('Server running at http://0.0.0.0:8000/');
+app.use(express.static(__dirname + '/static'));
+app.get('/webrtc.io.js', function(req, res){ res.sendfile(clientJS); });
+
+app.listen(8000);
