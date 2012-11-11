@@ -180,16 +180,13 @@ h7{
 }
 
 #incompatible{
+    font-weight: bold;
+    display: none;
     position: absolute;
     height: 100%;
-    width: 98%;
-    margin: auto;
+    padding: 80px 20px 0 20px;
+    width: 90%;
     background: rgba(255,255,255,.6);
-}
-
-#incompatible h3{
-    position: relative;
-    top: 80px;
     text-align: center;
     font-size: 22px;
     color: darkred;

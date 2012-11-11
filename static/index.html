@@ -122,6 +122,11 @@
 		</ul>
 	</div>
 	<div class="modal-body">
+		<div id="incompatible">
+			Hey, sorry. You’ll need a browser with<br>
+			WebRTC and getUserMedia to play.<br>
+			We&rsquo;ve been using <a href="http://www.chrome.com">Chrome</a> 23.
+		</div>
 		<div id="byYourselfContainer">
 			<h5>Play by yourself</h5>
 			<h7>Be in a room with your mirror image</h7>
@@ -162,8 +167,7 @@
 
 
 		if (!navigator.getUserMedia && !PeerConnection){
-			var incompatibleElement = $('<div id="incompatible"><h3>:-( your browser seems incompatible <br> Please view in the latest build of <a href="http://www.chrome.com">Chrome</a></h3></div>');
-			$(".modal-body").prepend(incompatibleElement);
+			$("#incompatible").show();
 		}
 
 		$('#myModal').data('backdrop','static');
