@@ -168,8 +168,26 @@ h7{
 #myModal img{
     /*margin: 10px;*/
     width: 100%;
+    overflow: hidden;
 }
 
 .modal-body .btn{
     margin-top:10px;
+}
+
+#incompatible{
+    position: absolute;
+    height: 100%;
+    width: 95%;
+    margin: auto;
+    background: rgba(255,255,255,.6);
+}
+
+#incompatible h3{
+    position: relative;
+    top: 80px;
+    text-align: center;
+    font-size: 22px;
+    color: darkred;
+    line-height: 40px;
 }
