@@ -146,7 +146,7 @@ var faceDetection = {
             height : height * ratio
         };
 
-        client.setBoundingBox(coords);
+        modface.setBoundingBox(coords);
 
 //        var myImageData = context.getImageData(left, top, width, height);
 //        context.clearRect(0,0,canvas.width,canvas.height);

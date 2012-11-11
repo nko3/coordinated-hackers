@@ -1,16 +1,24 @@
 var modface = {
-	init: function() {
+	init: function(withStrangers) {
 		var videoInput = document.getElementById('myCamera');
 		var canvasInput = document.getElementById('faceDetect_canvas');
+		this.withAttractiveStrangers = withStrangers;
 		faceDetection.init(videoInput,canvasInput);
 	},
 	start: function(stream) {
-		this.socket = io.connect();
-		this.stream = stream;
-		this.rtcs = {};
-		this.socket.on('foundpartner', this.onfoundpartner.bind(this));
-		this.socket.on('partnermessage', this.dispatch('onpartnermessage').bind(this));
-		this.socket.on('partnerleft', this.dispatch('onpartnerleft').bind(this));
+		var mirrorVideo;
+		if (this.withAttractiveStrangers) {
+			this.socket = io.connect();
+			this.stream = stream;
+			this.rtcs = {};
+			this.socket.on('foundpartner', this.onfoundpartner.bind(this));
+			this.socket.on('partnermessage', this.dispatch('onpartnermessage').bind(this));
+			this.socket.on('partnerleft', this.dispatch('onpartnerleft').bind(this));
+		} else {
+			mirrorVideo = viewer.addSource(stream);
+			mirrorVideo.style.webkitTransform = 'rotate3d(0, 0, 0, 0)';
+			mirrorVideo.setAttribute('data-flipped');
+		}
 	},
 	onfoundpartner: function(msg, cb) {
 		var rtc = new RTC(this.socket, this.stream);
@@ -28,9 +36,9 @@ var modface = {
 
 startByYourself.addEventListener('click', function(){
 	document.body.removeChild(welcomeContainer);
-	modface.init();
+	modface.init(false);
 }, false);
 startWithOthers.addEventListener('click', function(){
 	document.body.removeChild(welcomeContainer);
-	modface.init();
+	modface.init(true);
 }, false);
