@@ -31,6 +31,12 @@ var gif = (function(){
         },1000);
 
 		Array.prototype.forEach.call(document.getElementById('videos').children, function(video) {
+			if (video.hasAttribute('data-flipped')) {
+				ctx.translate(canvas.width, 0);
+				ctx.scale(-1, 1);
+			} else {
+				ctx.restore();
+			}
 			ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
 			encoder.addFrame(ctx);
 		});
