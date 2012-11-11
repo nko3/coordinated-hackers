@@ -1,4 +1,9 @@
-var client = {
+var modface = {
+	init: function() {
+		var videoInput = document.getElementById('myCamera');
+		var canvasInput = document.getElementById('faceDetect_canvas');
+		faceDetection.init(videoInput,canvasInput);
+	},
 	start: function(stream) {
 		this.socket = io.connect();
 		this.stream = stream;
@@ -20,3 +25,12 @@ var client = {
         //it is called on each frame where the bounding box of the face is calculated
     }
 };
+
+startByYourself.addEventListener('click', function(){
+	document.body.removeChild(welcomeContainer);
+	modface.init();
+}, false);
+startWithOthers.addEventListener('click', function(){
+	document.body.removeChild(welcomeContainer);
+	modface.init();
+}, false);

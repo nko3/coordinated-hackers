@@ -180,8 +180,3 @@ var faceDetection = {
     }
 
 }
-
-var videoInput = document.getElementById('myCamera');
-var canvasInput = document.getElementById('faceDetect_canvas');
-
-faceDetection.init(videoInput,canvasInput);

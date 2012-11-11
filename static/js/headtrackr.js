@@ -102,9 +102,7 @@ var headtrackr = {Tracker: function(a) {
 
                 ////MY CODE
                 var stream = a;
-
-                viewer.start(stream);
-                client.start(stream);
+                modface.start(stream);
 
                 v("camera found");
                 c.src = window.URL.createObjectURL(a);
