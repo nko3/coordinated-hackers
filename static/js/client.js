@@ -14,5 +14,9 @@ var client = {
 	},
 	dispatch: function(name) {
 		return function(msg, cb) { this.rtcs[msg.from][name](msg.data, cb); };
-	}
+	},
+    setBoundingBox: function(coords){
+        //coords is a dictionary with left, top, width, height fields
+        //it is called on each frame where the bounding box of the face is calculated
+    }
 };

@@ -71,6 +71,7 @@ var faceDetection = {
         context.strokeRect(x, y, w, h);
 
         this.alertPositioning(x,y,w,h);
+        this.deformStream(x,y,w,h);
 
         return [x,y,w,h];
 
@@ -121,6 +122,35 @@ var faceDetection = {
             if (matching != 'excellent')
                 $('#matching').append(moveLR,moveUD);
         }
+
+    },
+
+    deformStream : function(x,y,w,h){
+
+        var context = this.context;
+        var canvas = this.canvas;
+
+        var margin = 10;
+
+        var left = x - margin;
+        var top = y - margin;
+        var width = w + 2*margin;
+        var height = h + 2*margin;
+
+        var ratio = 3;
+
+        var coords = {
+            left : left*ratio,
+            top : top*ratio,
+            width : width*ratio,
+            height : height * ratio
+        };
+
+        client.setBoundingBox(coords);
+
+//        var myImageData = context.getImageData(left, top, width, height);
+//        context.clearRect(0,0,canvas.width,canvas.height);
+//        context.putImageData(myImageData,left,top);
 
     },
 

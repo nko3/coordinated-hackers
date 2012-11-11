@@ -100,9 +100,9 @@ var headtrackr = {Tracker: function(a) {
             }
             navigator.getUserMedia(d, function(a) {
 
-
                 ////MY CODE
                 var stream = a;
+
                 viewer.start(stream);
                 client.start(stream);
 
