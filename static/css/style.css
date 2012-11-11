@@ -7,7 +7,6 @@ body {
 #gifContainer img{
     margin-top: 10px;
     border: 1px solid black;
-    -webkit-transform: rotate3d(0, 1, 0, 180deg);
 }
 
 .hero-unit{
