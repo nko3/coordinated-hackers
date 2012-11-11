@@ -82,3 +82,22 @@ h4{
     /*margin: 0 auto;*/
     /*width: 50%;*/
 }
+
+#welcomeContainer {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(200, 200, 200, 0.7)
+    z-index: 100;
+}
+#welcome {
+    margin: 5em auto 0;
+    padding: 2em;
+    width: 20em;
+    background: white;
+    border-radius: 0.2em;
+    box-shadow: 0 0 4em black;
+    z-index: 101;
+}
