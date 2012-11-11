@@ -24,6 +24,12 @@ var gif = (function(){
 	});
 
 	function screenShot() {
+
+        $('video').addClass('highlight')
+        setTimeout(function(){
+            $('video').removeClass('highlight')
+        },1000);
+
 		Array.prototype.forEach.call(document.getElementById('videos').children, function(video) {
 			ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
 			encoder.addFrame(ctx);

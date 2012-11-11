@@ -34,6 +34,11 @@ body {
     padding-bottom: 40px;
 }
 
+#gifContainer img{
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
 .hero-unit{
     padding-top: 20px;
 }
@@ -57,6 +62,10 @@ body {
     width: 640px;
     height: 480px;
     border: 1px solid black;
+}
+
+video.highlight{
+    box-shadow: 0px 0px 20px 5px #8BA870;
 }
 
 #videos video:not(:first-child) {
@@ -105,4 +114,13 @@ body {
 }
 #status{
     display: inline-block;
+}
+
+h4{
+    text-align: center;
+}
+
+#button_container{
+    /*margin: 0 auto;*/
+    /*width: 50%;*/
 }

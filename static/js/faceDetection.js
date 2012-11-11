@@ -98,7 +98,7 @@ var faceDetection = {
             else
                 moveLR = $('<i class="icon-arrow-right"></i>');
 
-            if (cy > targety)
+            if (cy < targety)
                 moveUD = $('<i class="icon-arrow-up"></i>');
             else
                 moveUD = $('<i class="icon-arrow-down"></i>');
