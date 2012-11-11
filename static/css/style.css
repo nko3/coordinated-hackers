@@ -74,7 +74,7 @@ video.highlight{
     display: inline-block;
 }
 
-h4{
+h3,h4{
     text-align: center;
 }
 
@@ -100,4 +100,43 @@ h4{
     border-radius: 0.2em;
     box-shadow: 0 0 4em black;
     z-index: 101;
+}
+
+#byYourselfContainer{
+    display:inline-block;
+    width: 49%;
+    float:left;
+    text-align: center;
+}
+
+#withOthersContainer{
+    display:inline-block;
+    width: 49%;
+    float:right;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+h5{
+    margin:2px;
+}
+#myModal li{
+    margin-left:50px;
+}
+
+h7{
+    font-size: 12px;
+    font-style: italic;
+}
+
+#myModal img{
+    /*margin: 10px;*/
+    width: 100%;
+}
+
+.modal-body .btn{
+    margin-top:10px;
 }

@@ -94,12 +94,12 @@ var faceDetection = {
             var dist = Math.sqrt((cx - targetx)*(cx - targetx) + (cy - targety)*(cy - targety));
 
             var move
-            if (cx > targetx)
+            if (cx < targetx)
                 moveLR = $('<i class="icon-arrow-left"></i>');
             else
                 moveLR = $('<i class="icon-arrow-right"></i>');
 
-            if (cy < targety)
+            if (cy > targety)
                 moveUD = $('<i class="icon-arrow-up"></i>');
             else
                 moveUD = $('<i class="icon-arrow-down"></i>');
