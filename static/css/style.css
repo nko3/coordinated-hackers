@@ -132,6 +132,17 @@ h7{
     font-style: italic;
 }
 
+#gifContainer h7{
+    text-align: center;
+    display:block;
+    margin-bottom: 2px;
+}
+
+#gifContainer h4{
+    text-align: center;
+    margin-bottom: 2px;
+}
+
 #myModal img{
     /*margin: 10px;*/
     width: 100%;

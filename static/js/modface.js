@@ -35,10 +35,11 @@ var modface = {
 };
 
 startByYourself.addEventListener('click', function(){
-	document.body.removeChild(welcomeContainer);
+    $('#myModal').modal('hide')
+    $('#population').html('You!')
 	modface.init(false);
 }, false);
 startWithOthers.addEventListener('click', function(){
-	document.body.removeChild(welcomeContainer);
+    $('#myModal').modal('hide')
 	modface.init(true);
 }, false);
