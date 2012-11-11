@@ -47,8 +47,13 @@ var gif = (function(){
 			var binary_gif = animation_parts.join('');
 			var data_url = 'data:image/gif;base64,'+window.btoa(binary_gif);
 
-			var gifItem = new Image();
-			gifItem.src = data_url;
+			var gifImage = new Image();
+			gifImage.src = data_url;
+			var gifItem = document.createElement("a");
+			gifItem.setAttribute("href", data_url);
+			gifItem.setAttribute("target", "_blank");
+			gifItem.appendChild(gifImage);
+
 			document.getElementById("gifContainer").appendChild(gifItem);
 			canvasDataArray = [];
 			animation_parts = [];
