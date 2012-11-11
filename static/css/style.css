@@ -165,6 +165,10 @@ h7{
     margin-bottom: 2px;
 }
 
+#myModal{
+    overflow: hidden;
+}
+
 #myModal img{
     /*margin: 10px;*/
     width: 100%;
@@ -178,7 +182,7 @@ h7{
 #incompatible{
     position: absolute;
     height: 100%;
-    width: 95%;
+    width: 98%;
     margin: auto;
     background: rgba(255,255,255,.6);
 }

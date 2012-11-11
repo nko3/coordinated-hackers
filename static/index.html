@@ -111,7 +111,7 @@
 
 </div><!--/.fluid-container-->
 
-<div id="myModal" class="modal hide fade" data-backdrop="static">
+<div id="myModal" class="modal hide fade">
 	<div class="modal-header">
 		<h2>Welcome to mod(face)</h2>
 		<h4>Like Chatroulette but the <a href="#" class="btn">next</a> button is on crack!</h4>
@@ -140,42 +140,6 @@
 	</div>
 </div>
 
-<div id="myModalIncompatible" class="modal hide fade">
-	<div class="modal-header">
-		<h2>Welcome to mod(face)</h2>
-		<h4>Like chat roullette, but the <a href="#" class="btn">next</a> button is on crack!</h4>
-		<ul>
-			<li>mod(face) rapidly cycles through video streams</li>
-			<li>superimpose your face with others and save to GIF!</li>
-		</ul>
-	</div>
-	<div class="modal-body">
-		<div class="modal-body">
-			<div id="incompatible">
-				<h3>:-( your browser seems incompatible <br> Please view in the latest build of <a href="http://www.chrome.com">Chrome</a></h3>
-			</div>
-			<div id="byYourselfContainer">
-				<h5>Be by yourself</h5>
-				<h7>Be in a room with your mirror image</h7>
-				<br>
-				<h7>example:</h7>
-				<img class="thumbnail" src="img/gif_solo.gif">
-				<div><a href="#" id="startByYourself" class="btn btn-primary">Go Solo</a></div>
-			</div>
-			<div id="withOthersContainer">
-				<h5>Play with others</h5>
-				<h7>Be in a room with others</h7>
-				<br>
-				<h7>example:</h7>
-				<img class="thumbnail" src="img/gif1.gif">
-				<div><a href="#" id="startWithOthers" class="btn btn-primary">Go Group</a></div>
-			</div>
-		</div>
-	</div>
-	<div class="modal-footer">
-	</div>
-</div>
-
 <!--<div id="welcomeContainer">-->
 	<!--<div id="welcome">-->
 		<!--<button id="startByYourself">Do it by yourself</button>-->
@@ -194,12 +158,17 @@
 
 <script type="text/javascript">
 	$(window).load(function(){
+
+
 		if (!navigator.getUserMedia && !PeerConnection){
-			$('#myModalIncompatible').modal('show');
+			var incompatibleElement = $('<div id="incompatible"><h3>:-( your browser seems incompatible <br> Please view in the latest build of <a href="http://www.chrome.com">Chrome</a></h3></div>');
+			$(".modal-body").prepend(incompatibleElement);
 		}
-		else {
-			$('#myModal').modal('show');
+		else{
+			$('#myModal').data('backdrop','static');
 		}
+		
+		$('#myModal').modal('show');
 	});
 </script>
 
