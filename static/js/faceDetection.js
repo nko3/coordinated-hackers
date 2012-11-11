@@ -134,7 +134,7 @@ var faceDetection = {
 }
 
 
-var videoInput = document.getElementById('video1');
+var videoInput = document.getElementById('myCamera');
 var canvasInput = document.getElementById('canvas');
 
 faceDetection.init(videoInput,canvasInput);

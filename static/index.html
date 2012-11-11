@@ -1,61 +1,40 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Knockout. KaPow</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css" />
-</head>
-
-<body>
-
-	<div id="gifContainer"></div>
-	<div class="container">
-		<div class="buttonContainer">
-			<button id="screenshot">Screenshot</button>
-			<button id="finishGif">Finish GIF</button>
-		</div>
-		<video autoplay id="video1"></video>
-		<video autoplay id="video2"></video>
-
-		<div class="inputContainer">
-			<input id="interval" type="range" min=1 max=500 value=100><output for="interval"></output>
-		</div>
-
-		<canvas id="canvas"></canvas>
-
-		<div class="faceDetectionContainer">
-			Face Alignment: <div id="matching"></div>
-			<br>
-			Face Detection Status: <div id="status"></div>
-		</div>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Knockout. KaPow</title>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<div id="gifContainer"></div>
+<div id="main">
+	<div class="buttonContainer">
+		<button id="screenshot">Screenshot</button>
+		<button id="finishGif">Finish GIF</button>
+	</div>
+	<div id="videos">
+		<video autoplay id="myCamera"></video>
 	</div>
 
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="/js/rtc.js"></script>
+	<div class="inputContainer">
+		<input id="interval" type="range" min=1 max=1000 value=1000><output for="interval"></output>
+	</div>
 
-	<script src="js/jquery.js"></script>
-	<script src="js/headtrackr.js"></script>
-	<script src="js/viewer.js"></script>
-	<script src="js/faceDetection.js"></script>
+	<canvas id="canvas"></canvas>
 
-	<script src="js/b64.js"></script>
-	<script src="js/LZWEncoder.js"></script>
-	<script src="js/NeuQuant.js"></script>
-	<script src="js/GIFEncoder.js"></script>
-	<script src="js/gif.js"></script>
+	Face Alignment: <div id="matching"></div>
+	<br>
+	Face Detection Status: <div id="status"></div>
 
-	<!--<script>-->
-		<!--navigator.getUserMedia({video: true}, function(stream) {-->
-			<!--viewer.start(stream);-->
-			<!--rtc.start(stream);-->
-		<!--}, function(error) {-->
-			<!--console.log(error);-->
-		<!--});-->
-	<!--</script>-->
+</div>
 
+<script src="/js/jquery.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/rtc.js"></script>
+<script src="/js/client.js"></script>
+<script src="/js/viewer.js"></script>
 
-</body>
+<script src="/js/headtrackr.js"></script>
+<script src="/js/faceDetection.js"></script>
 
-</html>
-
+<script src="/js/b64.js"></script>
+<script src="/js/LZWEncoder.js"></script>
+<script src="/js/NeuQuant.js"></script>
+<script src="/js/GIFEncoder.js"></script>
+<script src="/js/gif.js"></script>

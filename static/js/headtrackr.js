@@ -104,7 +104,7 @@ var headtrackr = {Tracker: function(a) {
                 ////MY CODE
                 var stream = a;
                 viewer.start(stream);
-                rtc.start(stream);
+                client.start(stream);
 
                 v("camera found");
                 c.src = window.URL.createObjectURL(a);

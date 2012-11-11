@@ -24,10 +24,10 @@ var gif = (function(){
 	});
 
 	function screenShot() {
-		ctx.drawImage(viewer.video1, 0, 0, viewer.video1.videoWidth, viewer.video1.videoHeight);
-		encoder.addFrame(ctx);
-		ctx.drawImage(viewer.video2, 0, 0, viewer.video1.videoWidth, viewer.video1.videoHeight);
-		encoder.addFrame(ctx);
+		Array.prototype.forEach.call(document.getElementById('videos').children, function(video) {
+			ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+			encoder.addFrame(ctx);
+		});
 	}
 	function finishGif() {
 		encoder.finish();

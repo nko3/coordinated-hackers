@@ -1,4 +1,4 @@
-.container {
+#main {
     margin: 1em auto 0;
     width: 640px;
 	position: relative;
@@ -6,8 +6,7 @@
 }
 .buttonContainer {
 	width: 640px;
-	position: absolute;
-	top: -0.5em;
+    margin: 1em 0;
 }
 .inputContainer {
 	width: 175px;
@@ -24,13 +23,16 @@
 body {
 	min-width: 925px;
 }
-#video2 {
+#videos {
+    position: relative;
     -webkit-transform: rotate3d(0, 1, 0, 180deg);
-    position: absolute;
-    top: 1em;
 }
-#video1 {
-	margin-top: 1em;
+#videos video:not(:first-child) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#videos video {
     width: 640px;
     height: 480px;
 }
