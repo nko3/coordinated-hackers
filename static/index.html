@@ -6,6 +6,12 @@
 		margin: 1em auto 0;
 		position: relative;
 		width: 640px;
+		text-align: center;
+	}
+	.buttonContainer {
+		width: 640px;
+		position: absolute;
+		top: -1em;
 	}
 	#video2 {
 		position: absolute;
@@ -19,8 +25,23 @@
 		margin: 1em auto;
 		display: block;
 	}
+	#gifContainer {
+		float: right;
+		width: 15%;
+	}
+	#gifContainer img {
+		width: 100%;
+	}
+	body {
+		min-width: 925px;
+	}
 </style>
+<div id="gifContainer"></div>
 <div class="container">
+	<div class="buttonContainer">
+		<button id="screenshot">Screenshot</button>
+		<button id="finishGif">Finish GIF</button>
+	</div>
 	<video autoplay id="video2"></video>
 	<video autoplay id="video1"></video>
 	<div class="inputContainer">
@@ -30,10 +51,16 @@
 </div>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script src="/rtc.js"></script>
-<script src="/viewer.js"></script>
+<script src="js/rtc.js"></script>
+<script src="js/viewer.js"></script>
+<script src="js/b64.js"></script>
+<script src="js/LZWEncoder.js"></script>
+<script src="js/NeuQuant.js"></script>
+<script src="js/GIFEncoder.js"></script>
+<script src="js/gif.js"></script>
 <script>
 	"use strict";
+
 	navigator.getUserMedia({video: true}, function(stream) {
 		viewer.start(stream);
 		rtc.start(stream);
