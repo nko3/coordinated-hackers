@@ -4,6 +4,7 @@ window.URL = window.URL || window.webkitURL;
 
 var viewer = {
 	videos: document.getElementById("videos"),
+	population: document.getElementById("population").firstChild,
 	myCamera: document.getElementById("myCamera"),
 	interval: document.getElementById("interval"),
 
@@ -24,12 +25,14 @@ var viewer = {
 		newVideo.play();
 		newVideo.style.visibility = "hidden";
 		this.videos.appendChild(newVideo);
+		this.population.nodeValue = this.videos.children.length;
 		return newVideo;
 	},
 	removeSource: function(video) {
 		var next = this.nextActiveVideo();
 		if (video === next) { next.style.visibility = ""; }
 		this.videos.removeChild(video);
+		this.population.nodeValue = this.videos.children.length;
 	},
 	setToggle: function(time){
 		this.intervalHandle = setInterval(function(){
