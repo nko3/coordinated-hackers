@@ -14,7 +14,6 @@ io.sockets.on('connection', function(socket){
 			socket.partner = lobby.shift();
 			socket.partner.partner = socket;
 			socket.emit('foundpartner', { initiate: true }, function(sdp, cb){
-				console.log('got an offer stream back', sdp);
 				socket.partner.emit('foundpartner', { initiate: false, sdp: sdp });
 			});
 		} else {
@@ -30,9 +29,7 @@ io.sockets.on('connection', function(socket){
 	});
 	socket.on('disconnect', function() {
 		var idx;
-		console.log('later bro');
 		if (socket.partner) {
-			console.log('purdner:', socket.partner);
 			delete socket.partner.partner
 			socket.partner.emit('partnerleft');
 		} else {

@@ -64,11 +64,6 @@
 			peerConnection.onremovestream = dbgFn('removestream');
 			peerConnection.addStream(this.stream);
 		},
-		// onoffersuccess: function(cb, sdp) {
-		// 	console.log('offer/answer ready to go');
-		// 	this.peerConnection.setLocalDescription(sdp);
-		// 	cb(sdp, this.onofferanswered.bind(this));
-		// },
 		tellpartner: function(name, data){ this.socket.emit('tellpartner', {
 			name: name, data: data
 		}); },
@@ -93,27 +88,20 @@
 			this.createPeerConnection();
 			this.socket.emit('wantpartner');
 		},
-		onofferanswered: function(partner){
-			console.log('offer/answer answered');
-			this.peerConnection.setRemoteDescription(new RTCSessionDescription(partner));
-		},
 		onaddstream: function(event) { viewer.setOtherSource(event.stream); },
 		onfoundpartner: function(msg, cb) {
 			console.log('Found partner!', msg);
 			if (msg.initiate) {
 				this.peerConnection.createOffer(
 					function(sdp) {
-						console.log('offer created', sdp);
 						this.peerConnection.setLocalDescription(sdp);
 						cb(sdp);
-						// this.peerConnection.setRemoteDescription(new RTCSessionDescription(partner));
 					}.bind(this), null, { has_video: true }
 				);
 			} else {
 				this.peerConnection.setRemoteDescription(new RTCSessionDescription(msg.sdp));
 				this.peerConnection.createAnswer(
 					function(sdp) {
-						console.log('answer created', arguments);
 						this.peerConnection.setLocalDescription(sdp);
 						this.tellpartner('answer', sdp);
 					}.bind(this), null, { has_video: true }
