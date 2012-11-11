@@ -1,47 +1,51 @@
-<!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Knockout. KaPow</title>
-<style>
-	#main {
-		margin: 1em auto 0;
-		position: relative;
-		width: 640px;
-	}
-	#videoContainer {
-		-webkit-transform: rotate3d(0, 1, 0, 180deg);
-	}
-	#video2 {
-		position: absolute;
-	}
-	video {
-		width: 640px;
-		height: 480px;
-	}
-	.inputContainer {
-		width: 175px;
-		margin: 1em auto;
-		display: block;
-	}
-</style>
-<div id="main">
-	<div id="videoContainer">
-		<video autoplay id="video2"></video>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Knockout. KaPow</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+	<div class="container">
+
 		<video autoplay id="video1"></video>
+		<video autoplay id="video2"></video>
+
+		<div class="inputContainer">
+			<input id="interval" type="range" min=1 max=1000 value=1000><output for="interval"></output>
+		</div>
+
+		<canvas id="canvas"></canvas>
+
+		Face Alignment: <div id="matching"></div>
+		<br>
+		Face Detection Status: <div id="status"></div>
+
 	</div>
-	<div class="inputContainer">
-		<input id="interval" type="range" min=1 max=100 value=100><output for="interval"></output>
-	</div>
-</div>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/rtc.js"></script>
-<script src="/js/viewer.js"></script>
-<script>
-	"use strict";
-	navigator.getUserMedia({video: true}, function(stream) {
-		viewer.start(stream);
-		rtc.start(stream);
-	}, function(error) {
-		console.log(error);
-	});
-</script>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/ccv.js"></script>
+	<script type="text/javascript" src="js/face.js"></script>
+	<script type="text/javascript" src="js/headtrackr.js"></script>
+	<script type="text/javascript" src="js/faceDetection.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/rtc.js"></script>
+	<script src="/js/viewer.js"></script>
+
+	<script>
+		navigator.getUserMedia({video: true}, function(stream) {
+			viewer.start(stream);
+			rtc.start(stream);
+		}, function(error) {
+			console.log(error);
+		});
+	</script>
+
+
+</body>
+
+</html>
