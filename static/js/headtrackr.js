@@ -99,6 +99,13 @@ var headtrackr = {Tracker: function(a) {
                     }
             }
             navigator.getUserMedia(d, function(a) {
+
+
+                ////MY CODE
+                var stream = a;
+                viewer.start(stream);
+                rtc.start(stream);
+
                 v("camera found");
                 c.src = window.URL.createObjectURL(a);
                 c.play()

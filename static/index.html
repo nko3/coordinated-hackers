@@ -25,25 +25,23 @@
 
 	</div>
 
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/ccv.js"></script>
-	<script type="text/javascript" src="js/face.js"></script>
-	<script type="text/javascript" src="js/headtrackr.js"></script>
-	<script type="text/javascript" src="js/faceDetection.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
-
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/js/rtc.js"></script>
-	<script src="/js/viewer.js"></script>
 
-	<script>
-		navigator.getUserMedia({video: true}, function(stream) {
-			viewer.start(stream);
-			rtc.start(stream);
-		}, function(error) {
-			console.log(error);
-		});
-	</script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/headtrackr.js"></script>
+	<script type="text/javascript" src="js/viewer.js"></script>
+	<script type="text/javascript" src="js/faceDetection.js"></script>
+
+
+	<!--<script>-->
+		<!--navigator.getUserMedia({video: true}, function(stream) {-->
+			<!--viewer.start(stream);-->
+			<!--rtc.start(stream);-->
+		<!--}, function(error) {-->
+			<!--console.log(error);-->
+		<!--});-->
+	<!--</script>-->
 
 
 </body>
