@@ -1,30 +1,145 @@
 <!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Knockout. KaPow</title>
-<link rel="stylesheet" href="css/style.css" type="text/css">
-<div id="gifContainer"></div>
-<div id="main">
-	<div class="buttonContainer">
-		<button id="screenshot">Screenshot</button>
-		<button id="finishGif">Finish GIF</button>
-	</div>
-	<div id="videos">
-		<video autoplay id="myCamera"></video>
-	</div>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Knockout. KaPow</title>
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
 
-	<div class="inputContainer">
-		<input id="interval" type="range" min=10 max=500 value=100><output for="interval"></output>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="#">mod(face)</a>
+			<div class="nav-collapse collapse">
+				<p class="navbar-text pull-right">
+					Population: 4
+				</p>
+				<ul class="nav">
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
 	</div>
-
-	<canvas id="canvas"></canvas>
-
-	<div class="faceDetectionContainer">
-		Face Alignment: <div id="matching"></div>
-		<br>
-		Face Detection Status: <div id="status"></div>
-	</div>
-
 </div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+
+		<div class="span10">
+
+			<div class="hero-unit">
+
+				<div class="row">
+					<div class="span3">
+
+						<!--<div id="info">-->
+							<!--<h3>-->
+								<!--mod(face) cycles through video feeds-->
+								<!--align your faces and create a GIF by pressing snap!-->
+							<!--</h3>-->
+						<!--</div>-->
+
+						<div id='faceDetect_canvas_container'>
+							<canvas id="faceDetect_canvas"></canvas>
+						</div>
+
+						<table class="table">
+							<tr>
+								<td>Alignment</td>
+								<td><div id="matching"></div></td>
+							</tr>
+							<tr>
+								<td>Detection</td>
+								<td><div id="status"></div></td>
+							</tr>
+						</table>
+
+						Align your eyes with the horizontal line<br>
+						Center your face on the vertical line
+
+						<br>
+					</div>
+					<div class="span9">
+						<div id="videos">
+							<video autoplay id="myCamera"></video>
+						</div>
+
+						<div class="inputContainer">
+							<h4>Speed</h4>
+							<input id="interval" type="range" min=1 max=1000 value=100><output for="interval"></output> milliseconds
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div><!--/span-->
+
+		<div class="span2">
+			<div class="well sidebar-nav">
+
+				<ul id="gifContainer" class="nav nav-list thumbnails">
+					<h4>
+						GIFs
+						<button class="btn-mini" id="screenshot">Screenshot</button>
+						<button class="btn-mini" id="finishGif">Finish GIF</button>
+					</h4>
+
+					<li class="nav-header"></li>
+					<li>
+						<a href="#" class="thumbnail">
+							<img src="http://placehold.it/300x200" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="#" class="thumbnail">
+							<img src="http://placehold.it/300x200" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="#" class="thumbnail">
+							<img src="http://placehold.it/300x200" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="#" class="thumbnail">
+							<img src="http://placehold.it/300x200" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="#" class="thumbnail">
+							<img src="http://placehold.it/300x200" alt="">
+						</a>
+					</li>
+
+				</ul>
+			</div><!--/.well -->
+		</div><!--/span-->
+	</div><!--/row-->
+
+	<hr>
+
+	<footer>
+
+	</footer>
+
+</div><!--/.fluid-container-->
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/rtc.js"></script>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/headtrackr.js"></script>
+<script type="text/javascript" src="js/viewer.js"></script>
+<script type="text/javascript" src="js/faceDetection.js"></script>
 
 <script src="/js/jquery.js"></script>
 <script src="/socket.io/socket.io.js"></script>
@@ -32,11 +147,12 @@
 <script src="/js/client.js"></script>
 <script src="/js/viewer.js"></script>
 
-<script src="/js/headtrackr.js"></script>
-<script src="/js/faceDetection.js"></script>
 
 <script src="/js/b64.js"></script>
 <script src="/js/LZWEncoder.js"></script>
 <script src="/js/NeuQuant.js"></script>
 <script src="/js/GIFEncoder.js"></script>
 <script src="/js/gif.js"></script>
+
+</body>
+</html>

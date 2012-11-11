@@ -10,8 +10,8 @@ var faceDetection = {
 
         var htracker = new headtrackr.Tracker({
             ui : false,
-            headPosition : false,
-            smoothing : false
+            headPosition : false
+//            smoothing : false
         });
 
         htracker.init(video, canvas);
@@ -92,19 +92,34 @@ var faceDetection = {
 
             var dist = Math.sqrt((cx - targetx)*(cx - targetx) + (cy - targety)*(cy - targety));
 
+            var move
+            if (cx > targetx)
+                moveLR = $('<i class="icon-arrow-left"></i>');
+            else
+                moveLR = $('<i class="icon-arrow-right"></i>');
+
+            if (cy > targety)
+                moveUD = $('<i class="icon-arrow-up"></i>');
+            else
+                moveUD = $('<i class="icon-arrow-down"></i>');
+
+
             var matching;
 
             if (dist > threshhold){
-                matching = 'bad';
+                matching = 'poor ';
             }
             else if (dist > threshhold/3){
-                matching = 'good';
+                matching = 'good ';
             }
             else {
                 matching = 'excellent';
             }
 
             $('#matching').html(matching);
+
+            if (matching != 'excellent')
+                $('#matching').append(moveLR,moveUD);
         }
 
     },
@@ -114,14 +129,17 @@ var faceDetection = {
         var context = this.context;
         var canvas = this.canvas;
 
-        context.lineWidth = 2;
-        context.strokeStyle = "green";
+        context.lineWidth = 3;
+        context.strokeStyle = "lightgreen";
 
         //vertical line
         context.beginPath();
         context.moveTo(canvas.width/2, 0);
         context.lineTo(canvas.width/2,canvas.height);
         context.stroke();
+
+        context.lineWidth = 2;
+        context.strokeStyle = "lightgreen";
 
         //horizontal line
         context.beginPath();
@@ -133,8 +151,7 @@ var faceDetection = {
 
 }
 
-
 var videoInput = document.getElementById('myCamera');
-var canvasInput = document.getElementById('canvas');
+var canvasInput = document.getElementById('faceDetect_canvas');
 
 faceDetection.init(videoInput,canvasInput);
