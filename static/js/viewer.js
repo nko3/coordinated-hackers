@@ -16,7 +16,7 @@ var viewer = {
 		}.bind(this));
 		interval.nextSibling.value = interval.value;
 		this.video1.src = streamURL;
-		this.setToggle(50);
+		this.setToggle(interval.value);
 	},
 	setOtherSource: function(stream) {
 		if (stream) {
