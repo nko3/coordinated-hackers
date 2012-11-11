@@ -8,6 +8,9 @@ body {
     margin-top: 10px;
     border: 1px solid black;
     -webkit-transform: rotate3d(0, 1, 0, 180deg);
+    -moz-transform: rotate3d(0, 1, 0, 180deg);
+    -o-transform: rotate3d(0, 1, 0, 180deg);
+    transform: rotate3d(0, 1, 0, 180deg);
 }
 
 .hero-unit{
@@ -37,6 +40,9 @@ video.highlight{
     width: 640px;
     height: 480px;
     -webkit-transform: rotate3d(0, 1, 0, 180deg);
+    -moz-transform: rotate3d(0, 1, 0, 180deg);
+    -o-transform: rotate3d(0, 1, 0, 180deg);
+    transform: rotate3d(0, 1, 0, 180deg);
 }
 
 #faceDetect_canvas_container{
@@ -46,6 +52,10 @@ video.highlight{
 
 #faceDetect_canvas {
     -webkit-transform: rotate3d(0, 1, 0, 180deg);
+    -moz-transform: rotate3d(0, 1, 0, 180deg);
+    -o-transform: rotate3d(0, 1, 0, 180deg);
+    transform: rotate3d(0, 1, 0, 180deg);
+
     width: 213px;
     height: 160px;
     border: 1px solid black;
