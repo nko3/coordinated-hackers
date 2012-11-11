@@ -17,7 +17,7 @@ var modface = {
 		} else {
 			mirrorVideo = viewer.addSource(stream);
 			mirrorVideo.style.webkitTransform = 'rotate3d(0, 0, 0, 0)';
-			mirrorVideo.setAttribute('data-flipped');
+			mirrorVideo.setAttribute('data-flipped', 'data-flipped');
 		}
 	},
 	onfoundpartner: function(msg, cb) {
