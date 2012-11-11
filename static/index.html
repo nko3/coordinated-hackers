@@ -2,10 +2,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Knockout. KaPow</title>
 <style>
-	.container {
+	#main {
 		margin: 1em auto 0;
 		position: relative;
 		width: 640px;
+	}
+	#videoContainer {
 		-webkit-transform: rotate3d(0, 1, 0, 180deg);
 	}
 	#video2 {
@@ -21,13 +23,15 @@
 		display: block;
 	}
 </style>
-<div class="container">
-	<video autoplay id="video2"></video>
-	<video autoplay id="video1"></video>
-</div>
+<div id="main">
+	<div id="videoContainer">
+		<video autoplay id="video2"></video>
+		<video autoplay id="video1"></video>
+	</div>
 	<div class="inputContainer">
 		<input id="interval" type="range" min=1 max=100 value=100><output for="interval"></output>
 	</div>
+</div>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/rtc.js"></script>
